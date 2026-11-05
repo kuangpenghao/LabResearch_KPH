@@ -1,0 +1,122 @@
+[
+  {
+    "paper": "DFM",
+    "number": 1,
+    "syntax_valid": true,
+    "width": 674.5,
+    "height": 832,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030\\diagram_1.png"
+  },
+  {
+    "paper": "DFM",
+    "number": 2,
+    "syntax_valid": true,
+    "width": 574,
+    "height": 1016,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030\\diagram_2.png"
+  },
+  {
+    "paper": "DFM",
+    "number": 3,
+    "syntax_valid": true,
+    "width": 456,
+    "height": 643,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030\\diagram_3.png"
+  },
+  {
+    "paper": "LatentMem",
+    "number": 1,
+    "syntax_valid": true,
+    "width": 456,
+    "height": 712,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030\\diagram_1.png"
+  },
+  {
+    "paper": "LatentMem",
+    "number": 2,
+    "syntax_valid": true,
+    "width": 552,
+    "height": 728,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030\\diagram_2.png"
+  },
+  {
+    "paper": "LatentMem",
+    "number": 3,
+    "syntax_valid": true,
+    "width": 216.5,
+    "height": 664,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030\\diagram_3.png"
+  },
+  {
+    "paper": "MLP_Memory",
+    "number": 1,
+    "syntax_valid": true,
+    "width": 360,
+    "height": 696,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030\\diagram_1.png"
+  },
+  {
+    "paper": "MLP_Memory",
+    "number": 2,
+    "syntax_valid": true,
+    "width": 552,
+    "height": 696,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030\\diagram_2.png"
+  },
+  {
+    "paper": "MLP_Memory",
+    "number": 3,
+    "syntax_valid": true,
+    "width": 380,
+    "height": 712,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030\\diagram_3.png"
+  },
+  {
+    "paper": "MSA",
+    "number": 1,
+    "syntax_valid": true,
+    "width": 541.5,
+    "height": 696,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030\\diagram_1.png"
+  },
+  {
+    "paper": "MSA",
+    "number": 2,
+    "syntax_valid": true,
+    "width": 397.5,
+    "height": 702,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030\\diagram_2.png"
+  },
+  {
+    "paper": "MSA",
+    "number": 3,
+    "syntax_valid": true,
+    "width": 493,
+    "height": 648,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030\\diagram_3.png"
+  },
+  {
+    "paper": "Memory3",
+    "number": 1,
+    "syntax_valid": true,
+    "width": 456,
+    "height": 696,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030\\diagram_1.png"
+  },
+  {
+    "paper": "Memory3",
+    "number": 2,
+    "syntax_valid": true,
+    "width": 168,
+    "height": 784,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030\\diagram_2.png"
+  },
+  {
+    "paper": "Memory3",
+    "number": 3,
+    "syntax_valid": true,
+    "width": 360,
+    "height": 816,
+    "png": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030\\diagram_3.png"
+  }
+]

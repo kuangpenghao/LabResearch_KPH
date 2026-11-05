@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "mermaid": "^12.2.0",
+    "puppeteer-core": "^25.16.0"
+  }
+}

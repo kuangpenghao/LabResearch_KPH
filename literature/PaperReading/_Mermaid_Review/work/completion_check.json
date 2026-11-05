@@ -1,0 +1,32 @@
+[
+  {
+    "paper": "MLP_Memory",
+    "diagrams": 3,
+    "text_and_images_preserved": true,
+    "preview_matches": true
+  },
+  {
+    "paper": "LatentMem",
+    "diagrams": 3,
+    "text_and_images_preserved": true,
+    "preview_matches": true
+  },
+  {
+    "paper": "Memory3",
+    "diagrams": 3,
+    "text_and_images_preserved": true,
+    "preview_matches": true
+  },
+  {
+    "paper": "MSA",
+    "diagrams": 3,
+    "text_and_images_preserved": true,
+    "preview_matches": true
+  },
+  {
+    "paper": "DFM",
+    "diagrams": 3,
+    "text_and_images_preserved": true,
+    "preview_matches": true
+  }
+]

@@ -1,0 +1,107 @@
+[
+  {
+    "paper": "DFM",
+    "number": 1,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030\\diagram_1.mmd",
+    "code": "flowchart TD\n    A[\"当前层 token 状态 h\"] --> B[\"主干原有归一化 z\"]\n    B --> C[\"原因果自注意力\"]\n    B --> D[\"记忆交叉注意力的 Query\"]\n    E[\"本块共享的预测记忆 M\"] -->|\"投影为 K、V\"| F[\"各头在记忆槽间分配注意力\"]\n    D --> F\n    B --> G[\"当前 token、每头一个 sigmoid 门\"]\n    F --> H[\"逐头乘门值 → 拼接 → 输出投影\"]\n    G --> H\n    A --> I[\"残差相加：h + 自注意力 + 记忆更新\"]\n    C --> I\n    H --> I\n    I --> J[\"原 FFN 与后续 decoder 层\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "DFM",
+    "number": 2,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030\\diagram_2.mmd",
+    "code": "flowchart TD\n    A[\"前一块文本\"] --> B[\"离线检索 Top-16<br/>冻结编码器得到目标 V\"]\n    A --> C[\"主干输入 embedding 均值池化\"]\n    C --> D[\"因果预测器<br/>结合此前块表示，输出预测记忆\"]\n    B -.-> E[\"记忆 MSE\"]\n    D --> E\n    D --> F[\"共享投影器与各层门控记忆注意力\"]\n    F --> G[\"冻结主干的后续计算与词表预测\"]\n    H[\"真实后续 token\"] -.-> I[\"语言模型交叉熵\"]\n    G --> I\n    E --> J[\"总损失：LM + MSE\"]\n    I --> J\n    J --> L[\"更新预测器、输入投影与融合模块<br/>梯度穿过冻结主干，主干权重不更新\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "DFM",
+    "number": 3,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030\\diagram_3.mmd",
+    "code": "flowchart TD\n    subgraph TRAIN[\"训练对齐\"]\n        A[\"已完整可见的前一块\"] --> B[\"生成下一块的共享记忆\"]\n        B --> C[\"从前一块末位置开始<br/>支持下一块各 token 的预测\"]\n    end\n    subgraph QA[\"论文报告的 QA 实现\"]\n        D[\"当前可见的 prompt 块\"] --> E[\"形成查询与预测记忆，回答期间固定\"]\n        E --> F[\"有效 prompt 块对应位置可直接注入\"]\n        F --> G[\"回答扩展出新块索引\"]\n        G --> H[\"新块查询与掩码补零<br/>没有新块的直接记忆更新\"]\n    end",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\DFM\\DFM_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "LatentMem",
+    "number": 1,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030\\diagram_1.mmd",
+    "code": "flowchart TD\n    A[\"当前任务\"] --> B[\"从经验库检索相关合作轨迹\"]\n    B --> C[\"共享记忆生成器\"]\n    D[\"当前被调用智能体的角色描述\"] --> C\n    C --> E[\"该角色的 8 个连续记忆向量\"]\n    F[\"当前步骤提示的向量序列\"] --> G[\"提示向量后拼接记忆向量\"]\n    E --> G\n    G --> H[\"冻结的对应角色智能体\"]\n    H --> I[\"本步输出，交给原协作流程\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "LatentMem",
+    "number": 2,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030\\diagram_2.mmd",
+    "code": "flowchart TD\n    A[\"旧生成器与冻结智能体<br/>同一任务采样多条合作轨迹\"] --> B[\"已采样的消息与旧 token 概率\"]\n    A --> C[\"执行任务，计算每条轨迹的最终奖励\"]\n    C --> D[\"组内比较：得到轨迹优势值\"]\n    E[\"当前生成器产生角色记忆\"] --> F[\"冻结智能体重算<br/>已采样输出的条件概率\"]\n    B --> F\n    B --> G[\"新旧概率比 × 优势值<br/>构造裁剪目标 LMPO\"]\n    F --> G\n    D --> G\n    G --> H[\"更新生成器 LoRA<br/>梯度经冻结智能体输入传回\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "LatentMem",
+    "number": 3,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030\\diagram_3.mmd",
+    "code": "flowchart TD\n    A[\"新任务\"] --> B[\"检索经验库\"]\n    C[\"原始合作轨迹库\"] --> B\n    B --> D[\"按角色生成连续记忆\"]\n    D --> E[\"智能体按原框架协作\"]\n    E --> F[\"任务结果与完整新轨迹\"]\n    F --> G[\"追加新轨迹\"]\n    G --> C",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\LatentMem\\LatentMem_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "MLP_Memory",
+    "number": 1,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030\\diagram_1.mmd",
+    "code": "flowchart TD\n    A[\"训练语料的各个前缀\"] --> B[\"语言模型编码上下文\"]\n    B --> C[\"数据库：上下文向量与真实后继 token\"]\n    B --> D[\"当前位置的查询向量\"]\n    C --> E[\"近邻检索：排除当前位置自身\"]\n    D --> E\n    E --> F[\"按距离加权，同一后继 token 的权重相加\"]\n    F --> G[\"缓存检索教师的词表分布\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "MLP_Memory",
+    "number": 2,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030\\diagram_2.mmd",
+    "code": "flowchart TD\n    A[\"主模型上下文向量<br/>缓存读取，或冻结主模型现场计算\"] --> B[\"可训练 MLP 与输出头\"]\n    B --> C[\"记忆词表分布\"]\n    D[\"固定的检索教师分布\"] -.-> E[\"KL 损失\"]\n    C --> E\n    F[\"真实下一 token\"] -.-> G[\"交叉熵损失\"]\n    C --> G\n    E --> H[\"总损失：0.4 × KL + 0.6 × CE\"]\n    G --> H\n    H --> I[\"只更新 MLP 与独立输出头\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "MLP_Memory",
+    "number": 3,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030\\diagram_3.mmd",
+    "code": "flowchart TD\n    A[\"当前已生成的前缀\"] --> B[\"主模型运行到所选中间层\"]\n    B --> C[\"继续运行主模型后续层与输出头\"]\n    B --> D[\"MLP Memory 与独立输出头\"]\n    C --> E[\"主模型 softmax 概率\"]\n    D --> F[\"记忆 softmax 概率\"]\n    E -->|\"权重 1 − λ\"| G[\"概率加权求和\"]\n    F -->|\"权重 λ\"| G\n    G --> H[\"选择下一 token，接回前缀\"]\n    H --> A",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MLP_Memory\\MLP_Memory_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "MSA",
+    "number": 1,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030\\diagram_1.mmd",
+    "code": "flowchart TD\n    A[\"各文档独立编码，按 64 token 均值池化\"] --> B[\"路由 Key\"]\n    A --> C[\"内容 K、V\"]\n    D[\"问题或当前活动上下文\"] --> E[\"专用路由 Query\"]\n    B --> F[\"块级相似度 → 文档最高分\"]\n    E --> F\n    F --> G[\"选择 Top-16 篇文档\"]\n    G --> H[\"加载选中文档的全部压缩内容 KV\"]\n    C --> H\n    H --> I[\"与本地 KV 拼接，普通注意力读取\"]\n    D --> I",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "MSA",
+    "number": 2,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030\\diagram_2.mmd",
+    "code": "flowchart TD\n    A[\"当前问题与已有证据原文\"] --> B[\"通过稀疏记忆注意力继续生成\"]\n    B --> C{\"生成什么？\"}\n    C -->|\"证据文档 ID 与轮次分隔符\"| D[\"按 ID 取回原始文档\"]\n    D --> E[\"原文追加到活动上下文\"]\n    E --> A\n    C -->|\"结束检索标记\"| F[\"依据积累证据生成最终答案\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "MSA",
+    "number": 3,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030\\diagram_3.mmd",
+    "code": "flowchart TD\n    A[\"压缩后的记忆库\"] --> B[\"路由 Key：分片保存在多张 GPU\"]\n    A --> C[\"内容 K、V：保存在 CPU 内存\"]\n    D[\"当前路由 Query\"] --> E[\"各 GPU 扫描自己的分片\"]\n    B --> E\n    E --> F[\"合并候选，得到全局 Top-k 文档\"]\n    F --> G[\"仅传输选中文档的内容 KV 到 GPU\"]\n    C --> G\n    G --> H[\"执行内容注意力与生成\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\MSA\\MSA_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "Memory3",
+    "number": 1,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030\\diagram_1.mmd",
+    "code": "flowchart TD\n    A[\"当前 token 的 query\"] --> E[\"计算与所有可见 key 的分数\"]\n    B[\"取回的稀疏记忆 K、V\"] --> D[\"分别拼接 K 与 V\"]\n    C[\"本地上下文 K、V\"] --> D\n    D --> E\n    E --> F[\"联合 softmax<br/>在记忆与上下文之间分配权重\"]\n    F --> G[\"按权重汇总拼接后的 V\"]\n    D --> G\n    G --> H[\"原注意力输出投影与后续模型计算\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "Memory3",
+    "number": 2,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030\\diagram_2.mmd",
+    "code": "flowchart TD\n    A[\"不超过 128 token 的参考文本\"] --> B[\"固定模型版本，逐参考独立编码\"]\n    B --> C[\"仅取前 22 层、8 个 KV 头\"]\n    C --> D[\"每层每头按评分选 8 个位置\"]\n    D --> E[\"保留所选 K、V<br/>key 保留原有位置信息\"]\n    E --> F[\"可选：向量量化\"]\n    F --> G[\"外部记忆库：按参考 ID 保存\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030"
+  },
+  {
+    "paper": "Memory3",
+    "number": 3,
+    "source": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030\\diagram_3.mmd",
+    "code": "flowchart TD\n    A[\"无记忆预训练<br/>普通下一 token 预测\"] --> B[\"带记忆继续预训练\"]\n    C[\"每个训练块配 1 条参考<br/>共享前 4 块参考\"] --> B\n    B --> D[\"用当前模型实时编码参考<br/>接入正文注意力，优化 LM 损失\"]\n    D --> E[\"后训练，确定部署模型版本\"]\n    E --> F[\"冻结该版本，预编码参考 KV\"]\n    F --> G[\"在线按 ID 加载 KV<br/>每生成满 64 token 刷新 5 条参考\"]",
+    "directory": "D:\\PenghaoKuang\\LabResearch\\ResearchRecords\\literature\\PaperReading\\Memory3\\Memory3_Original\\work\\mermaid_review_20261030"
+  }
+]
